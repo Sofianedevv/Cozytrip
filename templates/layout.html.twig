@@ -1,0 +1,172 @@
+{% extends "base.html.twig" %}
+
+
+{% block body %}
+
+
+  <nav class="barre-menu">
+        <a href="{{path('app_home')}}" class="logo"><h1>COZY<span class="trip">TRIP</span></h1></a>
+        <div class="menu-links ">
+            <ul class="menu">
+                <li class ="menuone"><a  href="{{path('app_home')}}">Home</a></li>
+                <li class ="menuone"><a href="{{path('app_hebergements')}}">Les hébergements</a></li>
+
+                   {% if not is_granted('IS_AUTHENTICATED_FULLY') %} {# si aucun utilisateur n'est authentifié #}
+
+                <li class ="menuone" ><a href="{{path('app_login')}}">Connexion</a></li>
+                <li class ="menuone"><a href="{{path('app_register')}}">Inscription</a></li>
+                  {% else %}
+
+                  <li class ="menuone"><a href="{{path('app_mes_reservations')}}">Mes réservations </a></li>
+                <li class ="menuone"><a href="{{path('app_mon_profil')}}">Mon profil</a></li> 
+
+
+                  {% endif %}
+                <li class ="menuone"><a href="{{path('app_contact')}}">Contact</a></li>
+
+
+                  {% if is_granted('IS_AUTHENTICATED_FULLY') and is_granted('ROLE_ADMIN')  %} 
+
+
+                   <li class ="menuone"><a href="{{path('app_hebergement_add')}}">Ajout hebergement</a></li>
+                   <li class ="menuone"><a href="{{path('app_categorie_add')}}">Ajout categorie</a></li>
+                   
+                  
+                  {% endif %}
+                  
+
+                   {% if is_granted('IS_AUTHENTICATED_FULLY') %} {# si aucun utilisateur n'est authentifié #}
+
+
+                <li class ="menuone"><a href="{{path('app_logout')}}">Déconnexion</a></li> 
+                  {% endif %}
+
+            </ul>
+        </div>
+        
+        <img src="/img/menu-btn.png" alt="menu hamburger" class="barre-hamburger">
+  </nav>
+  
+
+  <header>
+    <div class="main">
+       <h4 class="location">Locations de vacances</h4>
+       <h1 class="titrecarte">"CozyTrip : Votre refuge douillet, réservé en un instant !"</h1>
+       <button class="btnreserver"  type="button"><a class="reservez" href="{{path('app_hebergements')}}">Réservez !</a></button>
+    </div>   
+  </header>    
+
+  
+
+<main >
+
+
+{% for message in app.flashes('error') %}
+		<div class ="alert alert-danger text-danger">
+		{{message}}
+		</div>
+
+		{% endfor %}
+
+		{% for message in app.flashes('success') %}
+		<div class ="alert alert-success text-center ">
+		{{message}}
+		</div>
+
+		{% endfor %}
+
+	{% block content %}
+  
+  
+  {% endblock %}
+
+	{% block final_js %}
+		{# insertion des script propre à chaque page #}
+	{% endblock %}
+</main>
+
+<footer>
+
+  <div class ="contenu-footer">
+
+        <div class ="bloc footer-services">
+          <h3> Nos services </h3>
+            <ul class="liste-services">
+              <li class ="menuone"><a class="lien-services" href="{{path('app_home')}}">Home</a></li>
+              <li class ="menuone"><a class="lien-services" href="{{path('app_hebergements')}}">Hebergements</a></li>
+                   {% if not is_granted('IS_AUTHENTICATED_FULLY') %} {# si aucun utilisateur n'est authentifié #}
+
+              <li class ="menuone"><a class="lien-services" href="{{path('app_register')}}">Inscription</a></li>
+              <li class ="menuone"><a class="lien-services" href="{{path('app_login')}}">Connexion</a></li>
+                  {% else %}
+
+              <li class ="menuone"><a href="{{path('app_mon_profil')}}">Mon profil</a></li> 
+              <li class ="menuone"><a href="{{path('app_mes_reservations')}}">Mes réservations </a></li>
+              <li class ="menuone"><a class="lien-services" href="{{path('app_logout')}}">Deconnexion</a></li>
+
+                  {% endif %}
+
+                   {% if is_granted('IS_AUTHENTICATED_FULLY') and is_granted('ROLE_ADMIN')  %} 
+
+
+              <li class ="menuone"><a href="{{path('app_hebergement_add')}}">Ajout hebergement</a></li>
+              <li class ="menuone"><a href="{{path('app_categorie_add')}}">Ajout categorie</a></li>
+                   
+                  
+                  {% endif %}
+
+            </ul>
+        </div>
+
+        <div class ="bloc footer-contact">
+          <h3> Contact </h3>
+            <ul class="liste-services">
+              <li>Tel: 01.20.20.20.20</li>
+              <li>21 rue des vacances, Paris, 75000</li>
+              <li class ="menuone"><a href="{{path('app_mention')}}">Mention légales </a></li>
+              <li class ="menuone"><a href="{{path('app_contact')}}">Contactez-nous</a></li>
+
+
+            </ul>
+        </div>
+
+
+
+        <div class ="bloc footer-horaires">
+            <h3> Horaires service clients </h3>
+              <ul class="liste-horaires">
+                  <li>✅ Lun 9h30-19h</li>
+                  <li>✅ Mar 9h30-19h</li>
+                  <li>✅ Mer 9h30-19h</li>
+                  <li>✅ Jeu 9h30-19h</li>
+                  <li>✅ Ven 9h30-19h</li>
+                  <li>❌ Sam fermé</li>
+                  <li>❌ Dim fermé</li>
+              </ul>
+          </div>
+
+
+
+        <div class ="bloc footer-medias">
+          <h3> Nos réseaux </h3>
+            <ul class="liste-media ">
+              <li class ="menuone" ><a class="lien-reseaux"href="https://fr-fr.facebook.com/"> <i class="fa-brands fa-facebook"> </i> Facebook</a></li>
+              <li class ="menuone"><a class="lien-reseaux"href="https://www.instagram.com/"> <i class="fa-brands fa-instagram"> </i> Instagram</a></li>
+              <li class ="menuone"><a class="lien-reseaux"href="https://twitter.com/"> <i class="fa-brands fa-twitter"> </i> Twitter</a></li>
+              <li class ="menuone"><a class="lien-reseaux"href="https://www.youtube.com/"> <i class="fa-brands fa-youtube"> </i> Youtube</a></li>
+            </ul>
+        </div>
+
+  </div>
+
+	
+</footer>
+
+
+
+
+   
+ 
+
+{% endblock %}
+

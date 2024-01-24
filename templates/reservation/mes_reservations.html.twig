@@ -1,0 +1,61 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+        <div class="container">
+               <h1 class="titremesreservations">Mes réservations</h1>
+                  {% if reservations|length == 0 %}
+                      <p>Aucune réservation pour le moment.</p>
+                  {% else %}
+                          <table class="table tablemesreservations">
+                            <thead>
+
+                              <tr>
+                                <th scope="col">Hebergement</th>
+                                <th scope="col">Debut du séjour</th>
+                                <th scope="col">Fin du séjour</th>
+                                <th scope="col">Prix du séjour TTC</th>
+                              </tr>
+
+
+                            </thead>
+                            <tbody>  
+                                {% for reservation in reservations %}
+
+                                    <tr>
+                                      <td>{{ reservation.hebergement.titre }}</td>
+                                      <td>{{ reservation.dateDebut|date('d/m/Y') }}</td>
+                                      <td>{{ reservation.dateFin|date('d/m/Y') }}</td>
+                                      <td>{{ reservation.getPrixTotal() }}€</td>
+                                    </tr>  
+                                {% endfor %}
+
+                             </tbody>
+                          </table>
+          </div>
+
+    {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

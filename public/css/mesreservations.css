@@ -1,0 +1,32 @@
+.titremesreservations{
+    margin-top: 100px;
+    margin-bottom: 50px;
+
+    
+}
+
+
+@media screen and (max-width: 769px) {
+
+
+    .tablemesreservations{
+        font-size: 13px;
+        
+
+    }
+
+
+
+
+}
+
+
+@media screen and (max-width: 480px) {
+
+
+    .tablemesreservations{
+        font-size: 12px;
+        
+
+    }
+}

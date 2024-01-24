@@ -1,0 +1,52 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Réserver{% endblock %}
+
+{% block content %}
+ <div class="container">
+        <h1 class="mt-5">Réserver</h1>
+
+             {{ form_start(form) }}
+             {{ form_widget(form) }}
+              {% if prixTotalField is defined %}
+                 {% set prixTotalRender = prixTotalField.render %}
+             {% endif %}
+             {{ form_end(form) }}
+             {% if prixTotalRender is defined %}
+                 {{ prixTotalRender }}
+             {% endif %}
+
+             {{ form_end(form) }}
+   </div>
+{% endblock %}
+
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        const dateDebutField = document.querySelector('#reservation_dateDebut');
+        const dateFinField = document.querySelector('#reservation_dateFin');
+        const prixTotalField = document.querySelector('#reservation_prixTotal');
+        const prixTotalDiv = document.querySelector('#prixTotal');
+
+        const updatePrixTotal = () => {
+            const dateDebut = new Date(dateDebutField.value);
+            const dateFin = new Date(dateFinField.value);
+            const difference = dateFin.getTime() - dateDebut.getTime();
+
+            //j'utilise (1000 * 3600 * 24) pour convertir la différence de temps en millisecondes en une différence en jours.
+            const differenceEnJours = difference / (1000 * 3600 * 24);
+            const prixTotal = differenceEnJours * {{ hebergement.prix }};
+
+            prixTotalField.value = prixTotal.toFixed(2);
+
+            // met à jour la valeur de l'élément HTM, tofixed permet d'arrondir le prix a deux décimal
+            prixTotalDiv.innerHTML = `Prix total: ${prixTotal.toFixed(2)} €`;
+        };
+
+        dateDebutField.addEventListener('change', updatePrixTotal);
+        dateFinField.addEventListener('change', updatePrixTotal);
+        updatePrixTotal();
+    </script>
+{% endblock %}

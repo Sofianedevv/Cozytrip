@@ -1,0 +1,18 @@
+#carouselExampleCaptions{
+
+    width: 50%;
+    margin: auto;
+}
+
+.carousel-item img{
+    width: 100%;
+    height: 400px;
+    margin-bottom: auto;
+
+
+}
+
+
+.carousselimg{
+    background-image:linear-gradient( rgba(0, 0, 0, 0.664), transparent), url(../photos/hebergement/Villa-luxe642aa77567f4b.jpg);  
+}

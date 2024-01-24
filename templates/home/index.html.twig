@@ -1,0 +1,34 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+
+
+
+
+    
+
+
+      <div class ="categoriebloc ">
+            {% for categorie in categories %}
+
+                  <figure class="imagecategorie">
+                    <a class="text-decoration-none" href="{{path('app_hebergement_categorie', {slug: categorie.slug})}}"> 
+                  
+                    <img class="imgcate" src="{{asset('photos/hebergement/' ~ categorie.photocategorie )}}" alt="image qui illustre une catégorie">
+                      <figcaption class="overlay">
+                          <p class="nomcategorie">{{categorie.nom}}</p>
+                      </figcaption>
+                      </a>
+                  </figure> 
+            {% endfor %}
+      </div>
+
+
+
+
+
+
+
+
+
+{% endblock %}

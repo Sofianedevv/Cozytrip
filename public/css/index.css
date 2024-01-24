@@ -1,0 +1,171 @@
+
+/* caroussel home */
+
+#carouselExampleCaptions{
+    width: 60%;
+    margin: auto;
+}
+
+.carousel-item img{
+    width: 80%;
+    height: 400px;
+    margin-bottom: auto;
+}
+
+/* ************************************************************************** */
+
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+body {
+    
+    font-family: 'Poppins'; 
+   
+
+
+   
+ }
+ 
+
+
+
+
+
+.btnreserver {
+    display: inline-block;
+    background-color: #49bbccad;
+    border-radius: 10px;
+    border: 4px double #cccccc;
+    color: #eeeeee;
+    text-align: center;
+    font-size: 1.8vw;
+    padding: 5px;
+    width: 15vw;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+ .btnreserver:hover {
+    background-color: rgb(54, 160, 198);
+  }
+
+
+  .categoriecard{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+    
+   
+  }
+
+
+
+
+.imagecategorie{
+    border: 1px solid lightgray;
+    box-shadow: 2px 2px 2px lightgray;
+    position: relative;
+    width: 30%;
+    border-radius:10px ;
+    overflow: hidden;
+    margin-bottom: 8px;
+    
+
+}
+
+.imagecategorie img{
+    width: 100%;
+    border-radius: 10px;
+    height: 100%;
+    object-fit: cover;
+    transition: 400ms;
+    
+}
+.imagecategorie:hover img{
+    transform: scale(1.2);
+}
+
+.imagecategorie .overlay{
+    position: absolute;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.409);
+    color: white;
+    font-size: 1.5rem;
+    width:  100%;
+    height: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: end;
+    transform: scale(1) ;
+    transition: .3s;
+    transform-origin: 25% 80%;
+    border-radius: 10px;
+}
+
+.imgcate{
+    vertical-align: middle;
+}
+
+.overlay:hover{
+    font-size: 2rem;
+    background-color: rgba(0, 0, 0, 0.127);
+
+
+}
+
+.categoriebloc{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 65px;
+}
+
+.nomcategorie{
+    margin-left: 15px;
+    margin-bottom: 15px;
+}
+
+
+
+
+
+
+
+
+@media screen and (max-width: 740px) {
+
+    .categoriecard{
+        margin: 2px;
+    }
+
+}
+
+@media screen and (max-width: 1000px) {
+
+   
+    .categoriebloc{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .imagecategorie{
+        width: 90%;
+    }
+
+}
+
+

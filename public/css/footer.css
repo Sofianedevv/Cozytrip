@@ -1,0 +1,127 @@
+
+
+footer{
+    flex-shrink: 0;
+    width: 100%;
+    
+    background-color: rgba(116, 230, 230, 0.108);
+    color: rgb(63, 161, 209);
+    margin-top: 80px;
+
+
+
+
+}
+
+
+
+.contenu-footer{
+    display: flex;
+    justify-content: space-evenly;
+    width: 1200px;
+    margin: 0 auto;
+    padding: 50px 0 100px;
+    list-style: none;
+    align-items: flex-start;
+   
+
+
+}
+
+.lien-reseaux , .lien-services{
+    text-decoration: none;
+}
+
+.bloc{
+    width: 25%;
+    margin: 0 30px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.footer-contact h3,
+.footer-services h3,
+.footer-horaires h3,
+.footer-medias h3{
+font-size: 15px;
+padding-bottom: 20px;
+font-weight: bold;
+} 
+
+.footer-contact p {
+    padding: 5px 0 ;
+}
+
+.liste-services,
+.liste-horaires,
+.liste-media {
+    list-style-type: none;
+    margin-left: -30px;
+}
+
+
+.liste-services li {
+    padding: 2px 0;
+}
+
+.liste-services a {
+    text-decoration: none;
+    color: rgb(77, 135, 212);
+    }
+
+.liste-services a:hover{
+    color: rgb(77, 135, 212);
+    }
+
+
+.liste-media a {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    color: rgb(77, 135, 212);
+
+
+}
+
+.lien-reseaux{
+    display: flex;
+    gap: 10px;
+}
+
+
+
+
+
+@media screen and (max-width: 1300px) {
+            .contenu-footer {
+            width: 700px;
+            flex-wrap: wrap;
+            }
+            .bloc {
+            width: 40%;
+            margin: 0 0;
+            }
+            .bloc:nth-child(1),
+            .bloc:nth-child(2) {
+            margin-bottom: 50px;
+            }
+ }
+
+
+ @media screen and (max-width: 800px){
+        .contenu-footer {
+        width: 320px;
+        }
+        .bloc {
+        width: 300px;
+        margin: 30px 30px;
+        }
+        .bloc:nth-child(1),
+        .bloc:nth-child(2) {
+        margin-bottom: 30px;
+        }
+        .bloc:nth-child(1) {
+        margin-top: 0;
+        }
+}

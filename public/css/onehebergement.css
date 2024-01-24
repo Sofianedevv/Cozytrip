@@ -1,0 +1,161 @@
+.article-block {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    
+  }
+  
+  .article-block img {
+    max-width: 100%;
+    margin-right: 20px;
+    border-radius: 3%;
+    
+  }
+  
+  .article-block .description {
+    flex-grow: 1;
+    
+  }
+  
+  .article-block h2 {
+    margin-top: 0;
+    font-size: 1.5rem;
+  }
+  
+  .article-block p h6 {
+    margin-bottom: 10px;
+  }
+
+  .description{
+    width: 40%;
+    margin: 100px;
+  }
+.carrousselone{
+  width: 25%;
+
+}
+
+  
+
+.btnone{
+  display: inline-block;
+  background-color: #49bbccad;
+  border-radius: 10px;
+  border: 4px double #cccccc;
+  color: #eeeeee;
+  text-align: center;
+  font-size: 15px;
+  padding: 5px;
+  width: 200px;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.btnone:hover {
+  background-color: rgb(54, 160, 198);
+}
+
+.nomcommentaire{
+  font-weight: bolder;
+  margin-top: 15px;
+}
+.datecommentaire{
+  font-size: 11px;
+}
+
+
+@media screen and (max-width: 1200px) {
+
+  .description{
+    width: 30%;
+    margin: 100px;
+  }
+}
+
+
+
+@media screen and (max-width: 995px) {
+
+  .description{
+    width: 50%;
+    margin: 80px;
+  }
+
+  .article-block{
+    display: flex;
+    flex-direction: column;
+    margin-right: -200px;
+    margin-left: -200px;
+
+  }
+
+  .carrousselone{
+    width: 100%;
+    
+  
+  
+  }
+}
+
+@media screen and (max-width: 585px) {
+
+  .description{
+    width: 50%;
+    margin: 80px;
+  }
+
+  .article-block{
+    display: flex;
+    flex-direction: column;
+    margin-right: -150px;
+    margin-left: -150px;
+
+
+  }
+
+  .carrousselone{
+    width: 30%;
+  
+  }
+}
+
+@media screen and (max-width: 415px) {
+
+  .description{
+    width: 50%;
+    margin: 80px;
+  }
+
+  .article-block{
+    display: flex;
+    flex-direction: column;
+    margin-right: -100px;
+    margin-left: -100px;
+
+  }
+
+  .carrousselone{
+    width: 10%;
+  
+  }
+}
+
+
+
+
+.casecomm{
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  border: 1px black dashed;
+
+}
+
+.allcom{
+  display: flex;
+  flex-direction: row;
+}

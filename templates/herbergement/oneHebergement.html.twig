@@ -1,0 +1,157 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+	{{ hebergement.titre }}
+{% endblock %}
+
+{% block content %}
+
+<div class ="container">
+
+
+    
+            <div class="article-block "> 
+
+            <div id="carouselExampleCaptions" class="carousel slide  mt-5 carrousselone" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                    {% for photo in hebergement.photos %}
+                        {% if loop.index == 1 %}
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        {% else %}
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{loop.index - 1 }}" aria-label="Slide {{ loop.index }}"></button>
+                            
+                        {% endif %}
+
+                        {% endfor %}
+                    </div>
+                    <div class="carousel-inner">
+
+                        {% for photo in hebergement.photos %}  
+                        <div class="carousel-item {% if loop.index == 1 %} active {% endif %}">
+                    
+                            <img src="{{asset('photos/hebergement/' ~ photo.nom )}}" class="d-block w-100 " alt="photos de l'hébergement" id ="carousselimg">
+
+                        </div>
+                        {% endfor %}
+                        
+                    
+
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+
+                <div class="description">
+                    <h2>{{ hebergement.titre }}</h2>
+                    <p class ="onehebergementdescription">{{ hebergement.description }}</p>
+                    <h6>{{ hebergement.prix }}€/nuit</h6>
+
+                    <a href="{{ path('reservation_reserver',{id: hebergement.id}) }}">
+                            <button class="btnone">
+                                Réserver
+                            </button>  
+                    </a>
+
+                
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %} {# si aucun utilisateur n'est authentifié #}
+            {{ form(formCommentaire) }}
+
+            {% endif %}
+            <h3 class ="titrecommentaire mt-5"> Les avis de nos clients : </h3>    {% if not is_granted('IS_AUTHENTICATED_FULLY') %} {# si aucun utilisateur n'est authentifié #}
+<p> (connectez-vous pour pouvoir commenter) </p>
+{% endif %}
+
+
+            {% for commentaire in hebergement.commentaires | reverse %}
+            <div class = "border-primary border rounded container mb-2" > 
+
+            {% if app.user == commentaire.user %}
+
+            <a href="{{path('app_commentaire_modifier', {id: commentaire.id} ) }}" style="text-decoration: none">
+                <i class="fas fa-edit mx-1 text-primary"></i>
+            </a>
+            
+            <a href="{{path('app_commentaire_supprimer', {id: commentaire.id} ) }}" onclick ="return confirm('êtes vous sûr de vouloir supprimer le commentaire ? ')"  style="text-decoration: none">
+                <i class="fas fa-trash mx-1 text-danger" style="text-decoration: none"></i>
+            </a>
+            {% endif %}
+
+            
+            <span class="user-details">
+            {% if commentaire.user.photo is not null %}
+            <img src="{{ asset('uploads/photos/' ~ commentaire.user.photo ) }}" class="photoprofil" alt="photo de profil">
+                {% endif %}
+
+            <h6 class="nomcommentaire">{{ commentaire.user.nom }}</h6>
+            </span>
+
+            <p class="datecommentaire"> {{commentaire.dateCreation | date('d/m/Y \à H\\hi') }} </p>
+            <p>{{commentaire.contenu}} </p>
+
+            </div>
+
+
+
+
+
+</div>
+{% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gallery -->{% endblock %}

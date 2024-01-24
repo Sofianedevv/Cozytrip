@@ -1,0 +1,13 @@
+.photomonprofil{
+  
+        width: 200px; 
+        height: 200px; 
+        border-radius: 50%; 
+    
+}
+
+.btnprofil:hover{
+    font-weight: bolder;
+    text-decoration: underline;
+   
+  }

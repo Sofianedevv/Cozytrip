@@ -1,0 +1,20 @@
+@media screen and (max-width: 452px) {
+
+
+    .titreajoutheb{
+        font-size: 23px;
+        
+
+    }
+}
+
+
+@media screen and (max-width: 412px) {
+
+
+    .titreajoutheb{
+        font-size: 19px;
+        
+
+    }
+}

@@ -1,0 +1,102 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}all products{% endblock %}
+
+{% block content %}
+
+
+	
+			<div class="text-center mt-5 mb-5 ">
+				<div class="barrecategorie">
+					<ul class="cateresp ">
+						<a class="text-decoration-none" href="{{path('app_hebergements')}}">
+							<li class="btn btn-primary text-center m-">All</li>
+						</a>
+
+						{% for categorie in categories %}
+								<a class="text-decoration-none" href="{{path('app_hebergement_categorie', {slug: categorie.slug})}}">
+									<li class=" btn btn-primary text-center m-2">{{categorie.nom}}</li>
+								</a>
+							
+						{% endfor %}
+					
+					
+					</ul>
+				</div>
+				
+			</div>
+
+
+
+			<div class ="heb "> 
+
+				{% for hebergement in hebergements %}
+
+				
+						<div class="card">
+							{% for photo in hebergement.photos %}
+							<a href="{{ path('app_hebergement',{id: hebergement.id}) }}" style="text-decoration: none; color : black">
+									{% if loop.first %}
+									
+										
+								<img src="{{ asset('photos/hebergement/' ~ photo.nom ) }}" class = "imgheb" alt="photo de l'hebergement">
+									{% endif %}
+							{% endfor %}
+							<span class="titreetaddresse"><h3>{{ hebergement.titre }}, {{  hebergement.adresse }}, {{  hebergement.pays }} </h3> <p class = "ville"></p></span>
+							<p><span class ="price">{{ hebergement.prix }}€ / nuit</span> 
+							
+								<span class = "btncard"><a class=" btn btn-secondary btnvoir" href="{{ path('app_hebergement',{id: hebergement.id}) }}" style="text-decoration: none"><i class="fa-regular fa-eye "></i>
+								</a>
+								
+								{% if is_granted('IS_AUTHENTICATED_FULLY') and is_granted('ROLE_ADMIN')  %} 
+
+													<a class="btn btn-primary btnupdate" href="{{ path('app_hebergement_update', {id: hebergement.id}) }}" style="text-decoration: none"><i class="fa-regular fa-pen-to-square"></i>
+													</a>
+
+													<a class="btn btn-danger btndelete" href="{{ path('app_hebergement_delete', {id: hebergement.id}) }}" style="text-decoration: none" onclick="return confirm('êtes vous sûr de vouloir supprmier l\'article ?')" > <i class="fa-solid fa-trash"></i>
+													</a> 
+												{% endif %} </span></p>
+						
+						</div>
+</a>
+				{% endfor %}
+
+			</div>
+
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
